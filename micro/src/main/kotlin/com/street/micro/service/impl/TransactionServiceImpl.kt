@@ -32,4 +32,8 @@ class TransactionServiceImpl(
         return savedTransaction
     }
 
+    override fun deleteTransaction(id: String) {
+        transactionRepository.deleteById(id)
+    }
+
 }

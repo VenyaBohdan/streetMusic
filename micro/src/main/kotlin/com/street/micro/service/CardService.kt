@@ -8,5 +8,7 @@ interface CardService {
 
     fun getCardById(id: String): Card
     fun getAllCards(): List<Card>
+    fun saveCard(card: Card): Card
+    fun deleteCard(id: String)
 
 }

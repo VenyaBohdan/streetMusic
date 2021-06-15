@@ -23,4 +23,14 @@ class WalletController(
         val wallet = walletService.getWalletById(id)
         return ResponseEntity.ok(wallet)
     }
+
+    @PostMapping
+    fun saveWallet(@RequestBody wallet: Wallet): Wallet {
+        return walletService.saveWallet(wallet)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteWallet(@PathVariable id: String) {
+        walletService.deleteWallet(id)
+    }
 }

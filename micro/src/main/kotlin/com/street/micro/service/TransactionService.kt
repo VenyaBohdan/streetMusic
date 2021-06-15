@@ -9,5 +9,6 @@ interface TransactionService {
     fun getTransactionById(id: String): Transaction
     fun getAllTransactions(): List<Transaction>
     fun saveTransaction(transaction: Transaction): Transaction
+    fun deleteTransaction(id: String)
 
 }

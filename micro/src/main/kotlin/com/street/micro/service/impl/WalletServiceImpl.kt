@@ -27,4 +27,8 @@ class WalletServiceImpl(
         return walletRepository.insert(wallet)
     }
 
+    override fun deleteWallet(id: String) {
+        walletRepository.deleteById(id)
+    }
+
 }

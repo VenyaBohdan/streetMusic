@@ -19,4 +19,12 @@ class CardServiceImpl(
         return cardRepository.findAll()
     }
 
+    override fun saveCard(card: Card): Card {
+        return cardRepository.save(card)
+    }
+
+    override fun deleteCard(id: String) {
+        cardRepository.deleteById(id)
+    }
+
 }

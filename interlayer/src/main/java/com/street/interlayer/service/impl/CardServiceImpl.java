@@ -21,10 +21,12 @@ public class CardServiceImpl implements CardService {
 
     @Value("${payment.server.url}")
     private String paymentServiceUrl;
+    final private String CARD = "card/";
 
+    @Override
     public List<Card> getAllCards() {
         RestTemplate restTemplate = new RestTemplate();
-        Card[] cardResponse = restTemplate.getForObject(paymentServiceUrl + "/card", Card[].class);
+        Card[] cardResponse = restTemplate.getForObject(paymentServiceUrl + CARD, Card[].class);
         List<Card> cards = cardResponse == null ? Collections.emptyList() : Arrays.asList(cardResponse);
         cards.forEach(card -> {
             Account account = accountService.getAccountById(card.getOwnerId());
@@ -33,4 +35,21 @@ public class CardServiceImpl implements CardService {
         return cards;
      }
 
+     @Override
+     public Card getCardById(Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(paymentServiceUrl + CARD + id, Card.class);
+     }
+
+    @Override
+    public Card saveCard(Card card) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(paymentServiceUrl + CARD, card, Card.class).getBody();
+    }
+
+    @Override
+    public void deleteCard(Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(paymentServiceUrl + CARD + id);
+    }
 }
