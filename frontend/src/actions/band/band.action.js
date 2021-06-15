@@ -46,7 +46,7 @@ export const createBand = (name, description) => async (dispatch) => {
 
 export const updateBand = (data) => async (dispatch) => {
     try {
-        const res = await BandDataService.update(data);
+        const res = await BandDataService.create(data);
 
         dispatch({
             type: type.UPDATE_BAND,

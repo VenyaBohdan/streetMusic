@@ -13,10 +13,6 @@ class BandDataService {
         return http.post("/band", data);
     }
 
-    update(data) {
-        return http.post("/band", data);
-    }
-
     delete(id) {
         return http.delete("band/" + id);
     }
