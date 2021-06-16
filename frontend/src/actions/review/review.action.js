@@ -1,12 +1,12 @@
 import * as type from "./type"
-import BandService from "../../services/band.service"
+import ReviewService from "../../services/review.service";
 
-export const getBand = (id) => async (dispatch) => {
+export const getReview = (id) => async (dispatch) => {
     try {
-        const res = await BandService.get(id);
+        const res = await ReviewService.get(id);
 
         dispatch({
-            type: type.GET_BAND,
+            type: type.GET_REVIEW,
             payload: res.data
         });
 
@@ -16,12 +16,12 @@ export const getBand = (id) => async (dispatch) => {
     }
 }
 
-export const getBands = () => async (dispatch) => {
+export const getReviews = () => async (dispatch) => {
     try {
-        const res = await BandService.getAll();
+        const res = await ReviewService.getAll();
 
         dispatch({
-            type: type.GET_BANDS,
+            type: type.GET_REVIEWS,
             payload: res.data
         });
     } catch (err) {
@@ -29,12 +29,12 @@ export const getBands = () => async (dispatch) => {
     }
 }
 
-export const createBand = (name, description) => async (dispatch) => {
+export const createReview = (data) => async (dispatch) => {
     try {
-        const res = await BandService.create({name, description});
+        const res = await ReviewService.create(data);
 
         dispatch({
-            type: type.CREATE_BAND,
+            type: type.CREATE_REVIEW,
             payload: res.data
         });
 
@@ -44,12 +44,12 @@ export const createBand = (name, description) => async (dispatch) => {
     }
 }
 
-export const updateBand = (data) => async (dispatch) => {
+export const updateReview = (data) => async (dispatch) => {
     try {
-        const res = await BandService.create(data);
+        const res = await ReviewService.create(data);
 
         dispatch({
-            type: type.UPDATE_BAND,
+            type: type.UPDATE_REVIEW,
             payload: res.data
         });
 
@@ -59,12 +59,12 @@ export const updateBand = (data) => async (dispatch) => {
     }
 }
 
-export const deleteBand = (id) => async (dispatch) => {
+export const deleteReview = (id) => async (dispatch) => {
     try {
-        await BandService.delete(id);
+        await ReviewService.delete(id);
 
         dispatch({
-            type: type.DELETE_BAND,
+            type: type.DELETE_REVIEW,
             payload: {id}
         });
     } catch (err) {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { retrieveBands } from "../../actions/band/band.action";
+import { getBands } from "../../actions/band/band.action";
 import { Link } from "react-router-dom";
 
 class BandList extends Component {
@@ -15,7 +15,7 @@ class BandList extends Component {
     }
 
     componentDidMount() {
-        this.props.retrieveBands();
+        this.props.getBands();
     }
 
     setActiveBand = (band, index) => {
@@ -80,10 +80,10 @@ class BandList extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
     return {
-        bands: state.bandReducer
+        bands: store.bandState
     };
 }
 
-export default connect(mapStateToProps, { retrieveBands })(BandList)
+export default connect(mapStateToProps, { getBands: getBands })(BandList)

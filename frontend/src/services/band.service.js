@@ -1,21 +1,20 @@
 import http from "../http-common"
 
-class BandDataService {
-    getAll() {
+export default class BandService {
+
+    static async getAll() {
         return http.get("/band");
     }
 
-    get(id) {
+    static async get(id) {
         return http.get("/band/" + id);
     }
 
-    create(data) {
+    static async create(data) {
         return http.post("/band", data);
     }
 
-    delete(id) {
-        return http.delete("band/" + id);
+    static async delete(id) {
+        return http.delete("/band/" + id);
     }
 }
-
-export default new BandDataService();

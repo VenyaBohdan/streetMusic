@@ -1,12 +1,12 @@
 import * as type from "./type"
-import BandService from "../../services/band.service"
+import CardService from "../../services/card.service";
 
-export const getBand = (id) => async (dispatch) => {
+export const getCard = (id) => async (dispatch) => {
     try {
-        const res = await BandService.get(id);
+        const res = await CardService.get(id);
 
         dispatch({
-            type: type.GET_BAND,
+            type: type.GET_CARD,
             payload: res.data
         });
 
@@ -16,12 +16,12 @@ export const getBand = (id) => async (dispatch) => {
     }
 }
 
-export const getBands = () => async (dispatch) => {
+export const getCards = () => async (dispatch) => {
     try {
-        const res = await BandService.getAll();
+        const res = await CardService.getAll();
 
         dispatch({
-            type: type.GET_BANDS,
+            type: type.GET_CARDS,
             payload: res.data
         });
     } catch (err) {
@@ -29,12 +29,12 @@ export const getBands = () => async (dispatch) => {
     }
 }
 
-export const createBand = (name, description) => async (dispatch) => {
+export const createCard = (data) => async (dispatch) => {
     try {
-        const res = await BandService.create({name, description});
+        const res = await CardService.create(data);
 
         dispatch({
-            type: type.CREATE_BAND,
+            type: type.CREATE_CARD,
             payload: res.data
         });
 
@@ -44,12 +44,12 @@ export const createBand = (name, description) => async (dispatch) => {
     }
 }
 
-export const updateBand = (data) => async (dispatch) => {
+export const updateCard = (data) => async (dispatch) => {
     try {
-        const res = await BandService.create(data);
+        const res = await CardService.create(data);
 
         dispatch({
-            type: type.UPDATE_BAND,
+            type: type.UPDATE_CARD,
             payload: res.data
         });
 
@@ -59,12 +59,12 @@ export const updateBand = (data) => async (dispatch) => {
     }
 }
 
-export const deleteBand = (id) => async (dispatch) => {
+export const deleteCard = (id) => async (dispatch) => {
     try {
-        await BandService.delete(id);
+        await CardService.delete(id);
 
         dispatch({
-            type: type.DELETE_BAND,
+            type: type.DELETE_CARD,
             payload: {id}
         });
     } catch (err) {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
 import { updateBand, deleteBand } from "../../actions/band/band.action";
-import BandDataService from "../../services/band.service";
+import BandService from "../../services/band.service";
 
 class Band extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Band extends Component {
     }
 
     getBand = (id) => {
-        BandDataService.get(id)
+        BandService.get(id)
             .then((response) => {
                 this.setState({
                     currentBand: response.data
