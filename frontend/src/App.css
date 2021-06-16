@@ -37,18 +37,17 @@
   }
 }
 
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+.custom-card {
+  color: inherit;
+  text-decoration: none;
 }
 
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+.custom-card:visited {
+  color: inherit;
+  text-decoration: none;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+.custom-card:hover {
+  color: inherit;
+  text-decoration: none;
 }

@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 class BandList extends Component {
     constructor(props) {
         super(props);
-        console.log("Props: ");
-        console.log(props);
         this.state = {
             currentBand: null,
             currentIndex: -1
@@ -86,4 +84,4 @@ const mapStateToProps = (store) => {
     };
 }
 
-export default connect(mapStateToProps, { getBands: getBands })(BandList)
+export default connect(mapStateToProps, { getBands })(BandList)
