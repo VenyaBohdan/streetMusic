@@ -14,30 +14,31 @@ import java.util.List;
 public class BandServiceImpl implements BandService {
 
     @Value("${backend.server.url}")
-    private String backendServiceUrl;
+    private String backendServerUrl;
+    private final String BAND = "band/";
 
     @Override
     public List<Band> getAllBands() {
         RestTemplate restTemplate = new RestTemplate();
-        Band[] bandResponse = restTemplate.getForObject(backendServiceUrl + "/band", Band[].class);
+        Band[] bandResponse = restTemplate.getForObject(backendServerUrl + BAND, Band[].class);
         return bandResponse == null ? Collections.emptyList() : Arrays.asList(bandResponse);
     }
 
     @Override
     public Band getBandById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServiceUrl + "/band/" + id, Band.class);
+        return restTemplate.getForObject(backendServerUrl + BAND + id, Band.class);
     }
 
     @Override
     public Band saveBand(Band band) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServiceUrl + "/band", band, Band.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + BAND, band, Band.class).getBody();
     }
 
     @Override
     public void deleteBand(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServiceUrl + "/band/" + id);
+        restTemplate.delete(backendServerUrl + BAND + id);
     }
 }

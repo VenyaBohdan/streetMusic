@@ -11,6 +11,6 @@ public interface PlaceService {
     Place getPlaceById(Long id);
     List<Place> getAllPlaces();
     Place savePlace(Place place);
-    void deletePlace();
+    void deletePlace(Long id);
 
 }

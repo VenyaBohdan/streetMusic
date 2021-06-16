@@ -14,31 +14,31 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     @Value("${backend.server.url}")
-    private String backendServiceUrl;
-    final private String ACCOUNT = "account/";
+    private String backendServerUrl;
+    private final String ACCOUNT = "account/";
 
     @Override
     public Account getAccountById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServiceUrl + ACCOUNT + id, Account.class);
+        return restTemplate.getForObject(backendServerUrl + ACCOUNT + id, Account.class);
     }
 
     @Override
     public List<Account> getAllAccounts() {
         RestTemplate restTemplate = new RestTemplate();
-        Account[] accountResponse = restTemplate.getForObject(backendServiceUrl + ACCOUNT, Account[].class);
+        Account[] accountResponse = restTemplate.getForObject(backendServerUrl + ACCOUNT, Account[].class);
         return accountResponse == null ? Collections.emptyList() : Arrays.asList(accountResponse);
     }
 
     @Override
     public Account saveAccount(Account account) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServiceUrl + ACCOUNT, account, Account.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + ACCOUNT, account, Account.class).getBody();
     }
 
     @Override
     public void deleteAccount(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServiceUrl + ACCOUNT + id);
+        restTemplate.delete(backendServerUrl + ACCOUNT + id);
     }
 }
