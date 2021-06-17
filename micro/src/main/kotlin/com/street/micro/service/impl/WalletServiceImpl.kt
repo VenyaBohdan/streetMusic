@@ -20,7 +20,11 @@ class WalletServiceImpl(
     }
 
     override fun getAllWallets(): List<Wallet> {
-        return walletRepository.findAll();
+        val wallets =  walletRepository.findAll();
+        wallets.forEach{
+            it.transactions = transactionRepository.findAllByIdIn(it.transactionIds)
+        }
+        return wallets
     }
 
     override fun saveWallet(wallet: Wallet): Wallet {

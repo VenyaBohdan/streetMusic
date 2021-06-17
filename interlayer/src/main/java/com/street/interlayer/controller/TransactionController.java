@@ -17,7 +17,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Transaction> getTransactionById(@PathVariable String id) {
-        return ResponseEntity.ok(transactionService.getTransactionById(Long.valueOf(id)));
+        return ResponseEntity.ok(transactionService.getTransactionById(id));
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -35,7 +35,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteBand(@PathVariable String id) {
-        transactionService.deleteTransaction(Long.valueOf(id));
+        transactionService.deleteTransaction(id);
     }
 
 }

@@ -23,7 +23,7 @@ public class CardController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Card> getCardById(@PathVariable String id) {
-        return ResponseEntity.ok(cardService.getCardById(Long.valueOf(id)));
+        return ResponseEntity.ok(cardService.getCardById(id));
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
@@ -36,7 +36,7 @@ public class CardController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteBand(@PathVariable String id) {
-        cardService.deleteCard(Long.valueOf(id));
+        cardService.deleteCard(id);
     }
 
 }

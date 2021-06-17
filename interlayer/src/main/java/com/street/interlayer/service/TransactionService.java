@@ -8,8 +8,8 @@ import java.util.List;
 @Service
 public interface TransactionService {
 
-    Transaction getTransactionById(Long id);
+    Transaction getTransactionById(String id);
     List<Transaction> getAllTransactions();
     Transaction saveTransaction(Transaction transaction);
-    void deleteTransaction(Long id);
+    void deleteTransaction(String id);
 }

@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public interface WalletService {
 
-    Wallet getWalletById(Long id);
+    Wallet getWalletById(String id);
     List<Wallet> getAllWallets();
     Wallet saveWallet(Wallet wallet);
-    void deleteWallet(Long id);
+    void deleteWallet(String id);
 
 }

@@ -21,4 +21,13 @@ public class Band {
     private String name;
     private String description;
     private String genre;
+
+    public Band() {
+    }
+
+    public Band(String name, String description, String genre) {
+        this.name = name;
+        this.description = description;
+        this.genre = genre;
+    }
 }

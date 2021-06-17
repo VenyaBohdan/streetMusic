@@ -19,7 +19,7 @@ public class WalletController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Wallet> getWalletById(@PathVariable String id) {
-        return ResponseEntity.ok(walletService.getWalletById(Long.valueOf(id)));
+        return ResponseEntity.ok(walletService.getWalletById(id));
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class WalletController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteBand(@PathVariable String id) {
-        walletService.deleteWallet(Long.valueOf(id));
+        walletService.deleteWallet(id);
     }
 
 }

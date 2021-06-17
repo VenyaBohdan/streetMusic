@@ -36,9 +36,12 @@ public class CardServiceImpl implements CardService {
      }
 
      @Override
-     public Card getCardById(Long id) {
+     public Card getCardById(String id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(paymentServerUrl + CARD + id, Card.class);
+        Card card = restTemplate.getForObject(paymentServerUrl + CARD + id, Card.class);
+        Account account = accountService.getAccountById(card.getOwnerId());
+        card.setAccount(account);
+        return card;
      }
 
     @Override
@@ -48,7 +51,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public void deleteCard(Long id) {
+    public void deleteCard(String id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(paymentServerUrl + CARD + id);
     }
